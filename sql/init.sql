@@ -1,0 +1,16 @@
+CREATE DATABASE lista;
+USE lista;
+
+CREATE TABLE item (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(100) NOT NULL,
+    concluido BOOLEAN NOT NULL,
+    user_id INT REFERENCES usuarios(id)
+);
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    senha VARCHAR(100) NOT NULL
+);
