@@ -41,7 +41,7 @@
         </fieldset>
     </form>
     <p>
-        <a href="app/criarconta.php">Criar uma conta</a>
+        <a href="../index.php">Voltar e fazer login</a>
     </p>
 </body>
 </html>
