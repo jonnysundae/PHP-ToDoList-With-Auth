@@ -14,7 +14,7 @@ class UsuarioService
         $this->bancoDeDados = BancoDeDados::conectar();
     }
 
-    public function buscarPorEmail($email)
+    public function buscarPorEmail($email, $retornarException = true)
     {
         $sql = "SELECT * FROM usuarios WHERE email = :email LIMIT 1";
         $stmt = $this->bancoDeDados->prepare($sql);
@@ -26,7 +26,9 @@ class UsuarioService
         if ($dados) {
             return new Usuario($dados['nome'], $dados['email'], $dados['id'], $dados['senha']);
         } else {
-            throw new EmailNaoEncontradoException();
+            if ($retornarException) {
+                throw new EmailNaoEncontradoException();
+            }
         }
         
     }
