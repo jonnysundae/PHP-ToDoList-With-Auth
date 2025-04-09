@@ -44,8 +44,9 @@ Este projeto é uma aplicação web de lista de tarefas (**To-Do List**) com **s
 
 | Data       | Versão | Alterações                                                                 |
 |------------|--------|---------------------------------------------------------------------------|
-| 04/04/2025 | 1.0    | Estrutura base com autenticação e listas                |
-| 26/04/2025 | 1.1    | Inicio da atualização para POO, iniciado pelo login do usuário                  |
+| 04/04/2025 | 1.0    | Estrutura base com autenticação e listas                                 |
+| 06/04/2025 | 1.1    | Inicio da atualização para POO, iniciado pelo login do usuário                  |
+| 09/04/2025 | 1.2    | Atualizado o código da criação de usuário                 |
 
 
 ### 📦 Versão 1 (Inicial)
@@ -55,7 +56,7 @@ Este projeto é uma aplicação web de lista de tarefas (**To-Do List**) com **s
 - Operações de login e cadastro com SQL direto no código (sem prepared statements)
 - Sem arquitetura em camadas
 
-### 🚀 Versão 1.1 (Atual)
+### 🚀 Versão 1.1
 - Parcialmente refatorado usando **PHP com POO (Programação Orientada a Objetos)**
 - Conexão ao banco via **PDO**, com uso de `prepare()` e `execute()` (segurança contra SQL Injection)
 - Separação clara de responsabilidades:
@@ -64,6 +65,11 @@ Este projeto é uma aplicação web de lista de tarefas (**To-Do List**) com **s
   - `controller/` (Controle do fluxo da aplicação)
 - Sistema de autenticação com:
 - Início da implementação de CRUD completo (usuários e tarefas)
+
+### 🚀 Versão 1.2 (Atual)
+- Atualizado o código da criação de usuário
+- Deletado arquivos legados de login e criação de usuário
+- Novas exceptions adicionadas
 
 ## 💡 Melhorias Futuras
 
