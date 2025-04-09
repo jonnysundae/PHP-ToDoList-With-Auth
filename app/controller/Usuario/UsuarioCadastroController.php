@@ -17,14 +17,6 @@ function verificarSeSenhaEstaDiferente($senha, $confirmarSenha)
     }
 }
 
-function verificarSeNaoExisteUsuarioComEmail($usuario)
-{
-    global $service;
-    if ($service->buscarPorEmail($usuario->getEmail(), false) instanceof Usuario) {
-        throw new EmailJaCadastradoException();
-    }
-}
-
 function verificarSeTodosCamposObrigadoriosEstaoPreenchidos()
 {
     if (empty($_POST['nome']) || empty($_POST['email']) || empty($_POST['senha']) || empty($_POST['confirmarsenha'])) {
@@ -38,7 +30,6 @@ try {
 
     verificarSeTodosCamposObrigadoriosEstaoPreenchidos();
     verificarSeSenhaEstaDiferente($_POST['senha'], $_POST['confirmarsenha']);
-    verificarSeNaoExisteUsuarioComEmail($usuario);
 
     
     try {

@@ -50,14 +50,17 @@ class UsuarioService
 
     public function criarUsuario(Usuario $usuario)
     {
-        $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
-        $stmt = $this ->bancoDeDados->prepare($sql);
-        $stmt->execute([
-            ':nome' => $usuario->getNome(),
-            ':email' => $usuario->getEmail(),
-            ':senha' => password_hash($usuario->getSenha(), PASSWORD_DEFAULT)
-        ]);
-        
+        if ($this->buscarPorEmail($usuario->getEmail(), false) instanceof Usuario) {
+            throw new EmailJaCadastradoException();
+        } else {
+            $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
+            $stmt = $this ->bancoDeDados->prepare($sql);
+            $stmt->execute([
+                ':nome' => $usuario->getNome(),
+                ':email' => $usuario->getEmail(),
+                ':senha' => password_hash($usuario->getSenha(), PASSWORD_DEFAULT)
+            ]);
+        }
     }
 
 }
