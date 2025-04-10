@@ -107,20 +107,27 @@ class ItemService
     {
         $sql = "UPDATE item
                 SET descricao = ':descricao',
-                WHERE id = :id;";
+                WHERE id = :id
+                AND user_id = :user_id;";
         $stmt =  $this->bancoDeDados->prepare($sql);
-        $stmt->execute([':descricao' => $novaDescricao]);
+        $stmt->bindValue(':descricao', $novaDescricao, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $item->getId(), PDO::PARAM_INT);
+        $stmt->bindValue(':user_id', $item->getUserId(), PDO::PARAM_INT);
+        $stmt->execute();
     }
 
     public function mudarStatusItem(Item $item)
     {
         $sql = "UPDATE item
-                SET concluido = ':concluido',
-                WHERE id = :id;";
+                SET concluido = :concluido
+                WHERE id = :id
+                AND user_id = :user_id";
         $stmt =  $this->bancoDeDados->prepare($sql);
 
         $novoStatus = ($item->getConcluido() == 0) ? 1 : 0;
         $stmt->bindValue(':concluido', $novoStatus, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $item->getId(), PDO::PARAM_INT);
+        $stmt->bindValue(':user_id', $item->getUserId(), PDO::PARAM_INT);
         $stmt->execute();
     }
 
