@@ -59,7 +59,8 @@ if (!empty($htmlLista)) {
 		Puxa, nenhum item na sua lista!
 	</h5>
 
-	<form <?php echo $CSSTabelaLista;?> action="app/mudarStatus.php"
+	<form <?php echo $CSSTabelaLista;?>
+		action="/app/controller/Item/ItemMudarStatusConcluidoController.php"
 		method="post">
 		<table border="1px">
 			<thead>
